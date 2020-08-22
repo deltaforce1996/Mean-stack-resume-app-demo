@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="input-group stylish-input-group input-search">
+        <input type="text" class="form-control" placeholder="Search" />
+        <span class="input-group-addon">
+          <button type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <button class="btnNewItem btn btn-primary pull-right" ng-click="OpenModalEdit(null)">
+        <i style="color: white;" class="material-icons">add_circle_outline</i>
+        New Item
+      </button>
+    </div>
+
+    <div class="col-md-10">
+      <h4>Summary</h4>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-6" ng-repeat="item in cardItems">
+      <div class="card cards" style="margin-top: 5px; margin-bottom: 5px;">
+        <div class="card-header row">
+          <div class="card-icon" style="margin-top: 15px; margin-left: 10px;">
+            <i class="material-icons">{{item.Icon}}</i>
+          </div>
+          <div class="col-9">
+            <p>{{item.title}}</p>
+            <h3 class="card-title">
+              {{item.Value}}
+              <small>{{item.Unit}}</small>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">Items Details</h4>
+          <p class="card-category">Here is a subtitle for this table</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Id
+                </th>
+                <th>
+                  Title
+                </th>
+                <th>
+                  Date
+                </th>
+                <th>
+                  Disciption
+                </th>
+                <th>
+                  URL
+                </th>
+                <th>
+                  Status
+                </th>
+                <th>
+                  Action
+                </th>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in filteredTodos">
+                  <td>{{ item.Id }}</td>
+                  <td>{{ item.Title }}</td>
+                  <td>{{ item.Date }}</td>
+                  <td>{{ item.Disciption }}</td>
+                  <td>{{ item.Url }}</td>
+                  <td><a href="#" class="badge badge-danger" style="background-color: forestgreen;">Success</a></td>
+                  <td class="td-actions text-right">
+                    <button type="button" ng-click="OpenModalEdit(item)" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button ng-click="ConfirmedDel(item.Title)" type="button" rel="tooltip" title="Remove"
+                      class="btn btn-danger btn-link btn-sm">
+                      <i class="material-icons">close</i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" style="color: white;">
+      <div class="fixed-btn">
+        <i class="material-icons" style="align-content: center; align-items: center; margin-top: 17px; margin-left: 17px;">add</i>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

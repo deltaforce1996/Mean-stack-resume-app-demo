@@ -1,0 +1,222 @@
+<div class="cardmodal">
+  <div class="row">
+    <div class="col">
+      <h3 id="heading" style="margin-top: -1%; font-size: 20px;">SCreate Item</h3>
+    </div>
+    <div style="text-align: end; margin-top: -2%;" class="col">
+      <a href="" ng-click="cancel()" style="color: blueviolet; position: initial;"><i style="font-size: 30px" class="material-icons">close</i></a>
+    </div>
+  </div>
+  <form id="msform">
+    <!-- progressbar -->
+    <ul id="progressbar" class="row">
+      <li class="col ac active" id="account"><strong>Account</strong></li>
+      <li class="col au " id="personal"><strong>Personal</strong></li>
+      <!-- <li id="payment"><strong>Image</strong></li>
+      <li id="confirm"><strong>Finish</strong></li> -->
+    </ul>
+    <!-- <div class="progress">
+      <div
+        class="progress-bar progress-bar-striped progress-bar-animated"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
+    </div> -->
+    <!-- <br /> -->
+    <!-- fieldsets -->
+    <div  ng-show='showStep(1)'>
+      <div class="form-card">
+        <!-- <div class="row">
+          <div class="col-5">
+            <h2 class="fs-title">Account:</h2>
+          </div>
+          <div class="col-7">
+            <h2 class="steps">Step 1 - 2</h2>
+          </div>
+        </div> -->
+        <label class="fieldlabels">Id: (Autogenaral)</label>
+        <input type="text" name="Id" placeholder="Id" ng-model="data.Id" readonly />
+        <label class="fieldlabels">Title: *</label>
+        <input type="text" name="title" placeholder="Title" ng-model="data.Title" required/>
+        <label class="fieldlabels">Date: *</label>
+        <input type="text" name="date" placeholder="Date" ng-model="data.Date" required/>
+      </div>
+      <input
+        type="button"
+        name="next"
+        class="next action-button"
+        value="Next"
+        ng-click="stepForward()"
+      />
+    </div>
+    <div class="img" ng-show="showStep(2)">
+      <div class="form-card">
+        <!-- <div class="row">
+          <div class="col-5">
+            <h2 class="fs-title">Personal:</h2>
+          </div>
+          <div class="col-7">
+            <h2 class="steps">Step 2 - 2</h2>
+          </div>
+        </div> -->
+        <label class="fieldlabels">URL Project: *</label>
+        <input type="text" name="urlProject" placeholder="URL Project" ng-model="data.Url" />
+        <label class="fieldlabels">Disciption: *</label>
+        <input type="text" name="disciption" placeholder="Disciption" ng-model="data.Disciption" required/>
+      </div>
+      <input
+        type="button"
+        name="next"
+        class="next action-button"
+        value="Done"
+        ng-click="ok()"
+      />
+      <input
+        type="button"
+        name="previous"
+        class="previous action-button-previous"
+        value="Previous"
+        ng-click="stepBack()"
+      />
+    </div>
+    <!-- <fieldset>
+      <div class="form-card">
+        <div class="row">
+          <div class="col-7">
+            <h2 class="fs-title">Image Upload:</h2>
+          </div>
+          <div class="col-5">
+            <h2 class="steps">Step 3 - 4</h2>
+          </div>
+        </div>
+        <label class="fieldlabels">Upload Your Photo:</label>
+        <input type="file" name="pic" accept="image/*" />
+        <label class="fieldlabels">Upload Signature Photo:</label>
+        <input type="file" name="pic" accept="image/*" />
+      </div>
+      <input
+        type="button"
+        name="next"
+        class="next action-button"
+        value="Submit"
+      />
+      <input
+        type="button"
+        name="previous"
+        class="previous action-button-previous"
+        value="Previous"
+      />
+    </fieldset> -->
+    <!-- <fieldset>
+      <div class="form-card">
+        <div class="row">
+          <div class="col-7">
+            <h2 class="fs-title">Finish:</h2>
+          </div>
+          <div class="col-5">
+            <h2 class="steps">Step 4 - 4</h2>
+          </div>
+        </div>
+        <br /><br />
+        <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2>
+        <br />
+        <div class="row justify-content-center">
+          <div class="col-3">
+            <img src="https://i.imgur.com/GwStPmg.png" class="fit-image" />
+          </div>
+        </div>
+        <br /><br />
+        <div class="row justify-content-center">
+          <div class="col-7 text-center">
+            <h5 class="purple-text text-center">
+              You Have Successfully Signed Up
+            </h5>
+          </div>
+        </div>
+      </div>
+    </fieldset> -->
+  </form>
+</div>
+
+
+
+
+
+
+<!-- $(document).ready(function(){
+
+  var current_fs, next_fs, previous_fs; //fieldsets
+  var opacity;
+  var current = 1;
+  var steps = $("fieldset").length;
+  
+  setProgressBar(current);
+  
+  $(".next").click(function(){
+  
+  current_fs = $(this).parent();
+  next_fs = $(this).parent().next();
+  
+  //Add Class Active
+  $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+  
+  //show the next fieldset
+  next_fs.show();
+  //hide the current fieldset with style
+  current_fs.animate({opacity: 0}, {
+  step: function(now) {
+  // for making fielset appear animation
+  opacity = 1 - now;
+  
+  current_fs.css({
+  'display': 'none',
+  'position': 'relative'
+  });
+  next_fs.css({'opacity': opacity});
+  },
+  duration: 500
+  });
+  setProgressBar(++current);
+  });
+  
+  $(".previous").click(function(){
+  
+  current_fs = $(this).parent();
+  previous_fs = $(this).parent().prev();
+  
+  //Remove class active
+  $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+  
+  //show the previous fieldset
+  previous_fs.show();
+  
+  //hide the current fieldset with style
+  current_fs.animate({opacity: 0}, {
+  step: function(now) {
+  // for making fielset appear animation
+  opacity = 1 - now;
+  
+  current_fs.css({
+  'display': 'none',
+  'position': 'relative'
+  });
+  previous_fs.css({'opacity': opacity});
+  },
+  duration: 500
+  });
+  setProgressBar(--current);
+  });
+  
+  function setProgressBar(curStep){
+  var percent = parseFloat(100 / steps) * curStep;
+  percent = percent.toFixed();
+  $(".progress-bar")
+  .css("width",percent+"%")
+  }
+  
+  $(".submit").click(function(){
+  return false;
+  })
+  
+  }); -->

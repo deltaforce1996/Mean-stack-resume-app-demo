@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <!-- End Navbar -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card cards">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Edit Profile</h4>
+              <p class="card-category">Complete your profile</p>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group is-focused">
+                      <i class="material-icons bmd-label-floating">person</i>
+                      <label class="bmd-label-floating">UserId (disabled)</label>
+                      <input type="text" ng-model="User.UserId" class="form-control" disabled>
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-3">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Username</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div> -->
+                  <div class="col-md-6">
+                    <div class="form-group is-focused">
+                      <i class="material-icons bmd-label-floating">email</i>
+                      <label class="bmd-label-floating">Email</label>
+                      <input type="email" ng-model="User.UserEmail" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group is-focused">
+                      <i class="material-icons bmd-label-floating">perm_contact_calendar</i>
+                      <label class="bmd-label-floating">Fist Name</label>
+                      <input type="text" ng-model="User.UserFristnane" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group is-focused">
+                      <i class="material-icons bmd-label-floating">supervised_user_circle</i>
+                      <label class="bmd-label-floating">Last Name</label>
+                      <input type="text" ng-model="User.UserLastname" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Adress</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                </div> -->
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group is-focused">
+                      <i class="material-icons bmd-label-floating">calendar_today</i>
+                      <label class="bmd-label-floating">Brithday</label>
+                      <input type="date" ng-model="User.UserAge" placeholder="Date" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group is-focused">
+                      <i class="material-icons bmd-label-floating">call</i>
+                      <label class="bmd-label-floating">Tel</label>
+                      <input type="text" ng-model="User.UserTel" ng-change="TelFomatFunc()" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group is-focused">
+                      <i class="material-icons bmd-label-floating">person</i>
+                      <label class="bmd-label-floating">Facebook</label>
+                      <input type="text" ng-model="User.UserFacebook" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group is-focused">
+                      <i class="material-icons bmd-label-floating">person</i>
+                      <label class="bmd-label-floating">About Me</label>
+                      <div class="form-group is-focused">
+                        <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two
+                          seat Lambo.</label>
+                        <textarea ng-model="User.UserFacebook" class="form-control" rows="5"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" ng-click="Console()" class="btn btn-primary pull-right">Update Profile</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-primary" style="width: 100%;" ng-click="">
+            <i style="color: white; font-size: 25px;" class="material-icons">add_circle_outline</i>
+            New Education
+          </button>
+          <!-- UI Item Education -->
+          <div style="max-height:500px; overflow:auto; -webkit-scrollbar: none;">
+            <div class="card card-profile cards">
+              <div class="card-avatar">
+                <img class="img" src="/images/education.jpg" />
+              </div>
+              <div class="card-body">
+                <h6 class="card-category text-gray">Education Year</h6>
+                <h4 class="card-title">Name of University</h4>
+                <p class="card-description">
+                  Don't be scared of the truth because we need to restart the human foundation in truth And I love
+                  you
+                  like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                </p>
+                <a href="" class="btn btn-primary btn-round">Follow</a>
+              </div>
+            </div>
+          </div>
+          <!-- UI Item Education -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Images Content</h4>
+              <p class="card-category">Complete your profile</p>
+            </div>
+            <div class="card-body">
+              <div class="container-fluid">
+              </div>
+              <div class="row">
+                <div class="card cards" style="width:343px; height:300px; margin: 10px;">
+                  <div style="padding: 10px;">
+                    <img style="width:100%; height:230px; border-radius: 5px;"
+                      src="https://picsum.photos/seed/picsum/200/300" alt="Card image cap">
+                    <div class="card-body">
+                      <div class="row">
+                        <h6 style="color: gray; width: 60%;">Imagename</h6>
+                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="" class="btn btn-danger">Del</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" style="max-height:500px; height:500px;">
+          <div class="card" style="height: 385px;">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Skill Management</h4>
+              <p class="card-category">Here is a subtitle for this table</p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>
+                      Id
+                    </th>
+                    <th>
+                      Title
+                    </th>
+                    <th>
+                      Value
+                    </th>
+                    <th>
+                      Action
+                    </th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="item in 8">
+                      <td>item</td>
+                      <td>item</td>
+                      <td>item</td>
+                      <td><a href="#" class="badge badge-danger" style="background-color: forestgreen;">Success</a></td>
+                      <td class="td-actions text-right">
+                        <button type="button" ng-click="" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button ng-click="" type="button" rel="tooltip" title="Remove"
+                          class="btn btn-danger btn-link btn-sm">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

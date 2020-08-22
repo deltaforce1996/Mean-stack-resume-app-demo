@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LogIn</title>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/all.css">
+    <link rel="stylesheet" href="/stylesheets/notiflix-2.1.2.min.css" />
+
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="../controller/login.controller.js"></script>
+
+    <script src="javascripts/notiflix-2.1.2.min.js"></script>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+
+<body ng-app="Login" ng-controller="LogInController">
+    <img class="wave" src="/images/wave.png">
+    <div class="container">
+        <div class="img">
+            <img src="/images/bg.svg">
+        </div>
+        <div class="login-content">
+            <form action="index.html">
+                <img src="/images/avatar.svg">
+                <h2 class="title">{{Title}}</h2>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <input type="text" ng-model="userName" placeholder="Username" class="input">
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <input type="password" ng-model="passWord" placeholder="Password" class="input">
+                    </div>
+                </div>
+                <a href="#">Forgot Password?</a>
+                <input type="button" class="btn-singIn" value="Login" ng-click="LogIn()">
+                <hr class="my-4" style="margin: 10px; color: lightgray;">
+                <button ng-click="SingInGoogle()" class="btn btn-lg btn-google btn-block text-uppercase" type="button"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="button"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+
+</html>

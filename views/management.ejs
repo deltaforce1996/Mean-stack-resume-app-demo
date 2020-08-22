@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link href="stylesheets/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/stylesheets/notiflix-2.1.2.min.css" />
+  <link rel="stylesheet" href="/stylesheets/popups.css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script data-require="ui-bootstrap@*" data-semver="2.5.0"
+    src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.5.0.js"></script>
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+
+  <script src="javascripts/notiflix-2.1.2.min.js"></script>
+
+  <script src="controller/manage.controller.js"></script>
+  <script src="controller/content.controller.js"></script>
+  <script src="controller/dashboard.controller.js"></script>
+  <script src="controller/popup-controller/modal-new-project.controller.js"></script>
+  <script src="controller/profile.controller.js"></script>
+
+  <!-- <script>
+
+    var app = angular.module("myManage", ["ngRoute"]);
+
+    app
+      .config(function ($routeProvider) {
+        $routeProvider
+          .when("/dashboard", {
+            templateUrl: "dashboard",
+            controller: "DashBoardController"
+          })
+          .when("/contents", {
+            templateUrl: "contents",
+            controller: "ContentsController"
+          })
+          .otherwise({
+            redirectTo: "/dashboard"
+          });
+      })
+      .controller("ManageController", function ($scope) {
+        //    Start Varible Of Manage Controller.
+        $scope.menuItems = [
+          {
+            id: "01",
+            title: "Dashboard",
+            icon: "dashboard",
+            link: "#!dashboard"
+          },
+          {
+            id: "02",
+            title: "Edited",
+            icon: "perm_contact_calendar",
+            link: "#!contents"
+          }
+        ];
+
+        $scope.title = "Project";
+        $scope.titleContent = "DashBoard";
+
+        $scope.IsOpened = false;
+
+        $scope.states = {};
+        $scope.states.activeItem = "01";
+
+        //    End Varible Of Manage Controller.
+
+        //  Start Method
+        $scope.Opened = () => {
+          if (!$scope.IsOpened) {
+            $scope.IsOpened = true;
+            var myEl = angular.element(
+              document.querySelector(".navbar-toggler")
+            );
+            myEl.addClass("toggled");
+            console.log("True");
+          } else {
+            $scope.IsOpened = false;
+            var myEl = angular.element(
+              document.querySelector(".navbar-toggler")
+            );
+            myEl.removeClass("toggled");
+            console.log("False");
+          }
+        };
+
+        $scope.Actived = value => {
+          console.log(value);
+          $scope.states.activeItem = value;
+        };
+
+        //  End Method
+      })
+      .controller("DashBoardController", function ($scope) {
+        $scope.title = "DashBoard Controller";
+      })
+      .controller("ContentsController", function ($scope,$uibModal) {
+        //    Start Varible Of Contents Controller.
+        $scope.itemsDetails = [
+          {
+            Id: "P201904121545251",
+            Date: "2020-03-23",
+            Title: "Monitoring Pateint Of Alzimer",
+            Disciption: "Appication for tracking patints of Alzimer",
+            Url: "URL of files"
+          },
+          {
+            Id: "P201904121545251",
+            Date: "2020-03-23",
+            Title: "Monitoring Pateint Of Alzimer",
+            Disciption: "Appication for tracking patints of Alzimer",
+            Url: "URL of files"
+          },
+          {
+            Id: "P201904121545251",
+            Date: "2020-03-23",
+            Title: "Monitoring Pateint Of Alzimer",
+            Disciption: "Appication for tracking patints of Alzimer",
+            Url: "URL of files"
+          },
+          {
+            Id: "P201904121545251",
+            Date: "2020-03-23",
+            Title: "Monitoring Pateint Of Alzimer",
+            Disciption: "Appication for tracking patints of Alzimer",
+            Url: "URL of files"
+          },
+          {
+            Id: "P201904121545251",
+            Date: "2020-03-23",
+            Title: "Monitoring Pateint Of Alzimer",
+            Disciption: "Appication for tracking patints of Alzimer",
+            Url: "URL of files"
+          },
+          {
+            Id: "P201904121545251",
+            Date: "2020-03-23",
+            Title: "Monitoring Pateint Of Alzimer",
+            Disciption: "Appication for tracking patints of Alzimer",
+            Url: "URL of files"
+          }
+        ];
+
+        $scope.filteredTodos = [];
+        $scope.currentPage = 1;
+        $scope.numPerPage = 3;
+        $scope.maxSize = 5;
+
+        $scope.$watch("currentPage + numPerPage", function () {
+          var begin = ($scope.currentPage - 1) * $scope.numPerPage,
+            end = begin + $scope.numPerPage;
+
+          $scope.filteredTodos = $scope.itemsDetails.slice(begin, end);
+        });
+
+        $scope.title = "Contents Controller";
+        //    End Varible Of Contents Controller.
+
+        //  Start Method
+        $scope.ConfirmedDel = value => {
+          Notiflix.Notify.Init({ position: "right-bottom" });
+
+          Notiflix.Confirm.Show(
+            "Notiflix Delete",
+            "Do you want del " + value,
+            "Yes",
+            "No",
+            function () {
+              // Yes button callback
+              Notiflix.Notify.Success("Sol lucet omnibus");
+            },
+            function () {
+              // No button callback
+              Notiflix.Notify.Failure("Qui timide rogat docet negare");
+            }
+          );
+        };
+
+        //  End Method
+      });
+  </script> -->
+
+  <title>Manager Profile</title>
+</head>
+
+<body class="" ng-app="myManage" ng-controller="ManageController">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="public/images/sidebar-1.jpg">
+      <div class="logo">
+        <a href="#" class="simple-text logo-mini">
+          {{ title }}
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <!-- your sidebar here -->
+          <li ng-repeat="item in menuItems" class="nav-item " ng-class="{'active':item.id==states.activeItem}"
+            ng-click="Actived(item)">
+            <a class="nav-link" href="{{ item.link }}">
+              <i class="material-icons">{{ item.icon }}</i>
+              <h5>{{ item.title }}</h5>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" style="background-color: #EBEBEB;">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="col-sm-10 col-10 col-lg-8">
+            <a class="nc">{{ titleContent }}</a>
+          </div>
+          <button ng-click="Opened()" class="navbar-toggler " type="button" data-toggle="collapse"
+            aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+              <!-- your navbar here -->
+              <li class="nav-item">
+                <div class="nav-link">
+                  <div class="avatar-upload">
+                    <div class="avatar-edit">
+                      <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                      <label for="imageUpload"></label>
+                    </div>
+                    <div class="avatar-preview">
+                      <div id="imagePreview" style="background-image: url(https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U);">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <h5 style="margin-left: 10px; color: gray;">Username Lastname</h5>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" style="margin-left: 5px;" href="" ng-click="OpenedRightDrop()"  aria-haspopup="true">
+                  <i class="material-icons" style="font-size: 30px">exit_to_app</i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right {{dropdown}}" > 
+                  <a class="dropdown-item" href="#">Dashboard</a>
+                  <a class="dropdown-item" href="#">Settings</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Log out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <ng-view></ng-view>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="container-fluid">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="https://www.creative-tim.com">
+                  Footer
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright float-right">
+            Footer
+          </div>
+          <!-- your footer here -->
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+
+</html>
